@@ -5,6 +5,16 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobBoardApp", "JobBoardApp\JobBoardApp.csproj", "{7D098D9C-B7D4-4EC5-AFBC-C08FD911B499}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{DBEF189F-F503-46B7-942C-56FA1EE01B2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobBoardApp_DataAcces", "JobBoardApp_DataAcces\JobBoardApp_DataAcces.csproj", "{4047B604-2A80-4797-A685-B54139A93193}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobBoardApp_Infrastructure", "JobBoardApp_Infrastructure\JobBoardApp_Infrastructure.csproj", "{192DEA9B-7D6B-4042-87B4-ED8036CE80EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobBoardApp_Models", "JobBoardApp_Models\JobBoardApp_Models.csproj", "{544D69DF-FBB0-4655-95A0-247DD8AD910B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobBoardApp_Repository", "JobBoardApp_Repository\JobBoardApp_Repository.csproj", "{CFCC1EE5-2153-4720-89E0-9DDFD9B39253}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +25,31 @@ Global
 		{7D098D9C-B7D4-4EC5-AFBC-C08FD911B499}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D098D9C-B7D4-4EC5-AFBC-C08FD911B499}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D098D9C-B7D4-4EC5-AFBC-C08FD911B499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4047B604-2A80-4797-A685-B54139A93193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4047B604-2A80-4797-A685-B54139A93193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4047B604-2A80-4797-A685-B54139A93193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4047B604-2A80-4797-A685-B54139A93193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{192DEA9B-7D6B-4042-87B4-ED8036CE80EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{192DEA9B-7D6B-4042-87B4-ED8036CE80EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{192DEA9B-7D6B-4042-87B4-ED8036CE80EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{192DEA9B-7D6B-4042-87B4-ED8036CE80EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{544D69DF-FBB0-4655-95A0-247DD8AD910B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{544D69DF-FBB0-4655-95A0-247DD8AD910B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{544D69DF-FBB0-4655-95A0-247DD8AD910B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{544D69DF-FBB0-4655-95A0-247DD8AD910B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFCC1EE5-2153-4720-89E0-9DDFD9B39253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFCC1EE5-2153-4720-89E0-9DDFD9B39253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFCC1EE5-2153-4720-89E0-9DDFD9B39253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFCC1EE5-2153-4720-89E0-9DDFD9B39253}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4047B604-2A80-4797-A685-B54139A93193} = {DBEF189F-F503-46B7-942C-56FA1EE01B2F}
+		{192DEA9B-7D6B-4042-87B4-ED8036CE80EF} = {DBEF189F-F503-46B7-942C-56FA1EE01B2F}
+		{544D69DF-FBB0-4655-95A0-247DD8AD910B} = {DBEF189F-F503-46B7-942C-56FA1EE01B2F}
+		{CFCC1EE5-2153-4720-89E0-9DDFD9B39253} = {DBEF189F-F503-46B7-942C-56FA1EE01B2F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {86FBA7D3-8B42-4C38-8BF7-242EDF8CD8C0}

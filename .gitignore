@@ -1,3 +1,11 @@
 .vs/**
 JobBoardApp/bin/**
 JobBoardApp/obj/**
+JobBoardApp_DataAcces/bin/**
+JobBoardApp_DataAcces/obj/**
+JobBoardApp_Infrastructure/bin/**
+JobBoardApp_Infrastructure/obj/**
+JobBoardApp_Models/bin/**
+JobBoardApp_Models/obj/**
+JobBoardApp_Repository/bin/**
+JobBoardApp_Repository/obj/**

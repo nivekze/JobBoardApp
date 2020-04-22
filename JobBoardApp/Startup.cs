@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -13,17 +14,29 @@ namespace JobBoardApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+
+        public IHostEnvironment Enviroment { get; set; }
+        public IConfiguration Configuration { get; set; }
+        
+        public Startup(IConfiguration configuration, IHostEnvironment env)
         {
             Configuration = configuration;
+            Enviroment = env;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            var builder = new ConfigurationBuilder()
+                         .SetBasePath(Directory.GetCurrentDirectory())
+                         .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                         .AddJsonFile($"appsettings.{Enviroment.EnvironmentName}.json", optional: false, reloadOnChange: true)
+                         .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
