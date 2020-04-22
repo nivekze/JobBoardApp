@@ -39,14 +39,41 @@ namespace JobBoardApp_Repository
             }
         }
 
-        public void DeleteJob(JobDTO job)
+        public void DeleteJob(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var deleteJob = GetById(id);
+                if (deleteJob == null) throw new Exception("Job not found");
+
+                Delete(deleteJob);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
-        public void EditJob(JobDTO job)
+        public void EditJob(int id, JobDTO job)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (job.ExpiresAt.HasValue && job.ExpiresAt <= DateTime.Now)
+                    throw new Exception("Expires date must be greater than today");
+
+                var editedJob = GetById(id);
+                if (editedJob == null) throw new Exception("Job not found");
+
+                editedJob.Title = job.Title;
+                editedJob.Description = job.Description;
+                editedJob.ExpiresAt = job.ExpiresAt;
+
+                Update(editedJob);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public IQueryable<Job> GetPaginated(string filter, int initialPage, int pageSize, string order, out int totalRecords, out int recordsFiltered)
