@@ -10,7 +10,7 @@ namespace JobBoardApp_Infrastructure
     public interface IJobRepository : IRepository<Job>, IPagination<Job>
     {
         void CreateJob(JobDTO job);
-        void EditJob(JobDTO job);
-        void DeleteJob(JobDTO job);
+        void EditJob(int id, JobDTO job);
+        void DeleteJob(int id);
     }
 }
