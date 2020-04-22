@@ -12,7 +12,7 @@ namespace JobBoardApp_DataAcces.Context
     {
         public DbSet<Job> Jobs { get; set; }
 
-        public JobBoardAppContext(DbContextOptions<JobBoardAppContext> options) : base()
+        public JobBoardAppContext(DbContextOptions<JobBoardAppContext> options) : base(options)
         {
             this.ChangeTracker.LazyLoadingEnabled = false;
 
