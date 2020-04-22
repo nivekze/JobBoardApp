@@ -7,9 +7,12 @@
 <h1>@ViewBag.PageTitle</h1>
 
 @if (!string.IsNullOrWhiteSpace(ViewBag.Error)) { 
-<div class="alert alert-danger" role="alert">
-    Ooops! @ViewBag.Error
-</div>
+    <div class="alert alert-danger" role="alert">
+        Ooops! @ViewBag.Error
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 }
 
 

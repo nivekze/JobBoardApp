@@ -20,6 +20,8 @@ namespace JobBoardApp.Controllers
         // GET: Job
         public IActionResult Index()
         {
+            if (TempData["InfoMessage"] != null)
+                ViewBag.InfoMessage = TempData["InfoMessage"].ToString();
             return View();
         }
 
@@ -48,6 +50,8 @@ namespace JobBoardApp.Controllers
                     ExpiresAt = job.ExpiresAt
                 });
 
+                TempData["InfoMessage"] = "Job created";
+
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -63,6 +67,8 @@ namespace JobBoardApp.Controllers
             try 
             {
                 var job = _jobRepository.GetById(id);
+                if (job == null) throw new Exception("Job not found");
+
                 return View("NewEdit", new JobViewModel
                 {
                     Id = job.Id,
@@ -82,34 +88,47 @@ namespace JobBoardApp.Controllers
         // POST: Job/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, JobViewModel job)
+        public IActionResult Edit(int id, JobViewModel editJob)
         {
             try
             {
-                // TODO: Add update logic here
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.Error = "Required data is missing!";
+                    return View("NewEdit", editJob);
+                }
 
+                _jobRepository.EditJob(id, new JobDTO { 
+                    Id = editJob.Id,
+                    Title = editJob.Title,
+                    Description = editJob.Description,
+                    ExpiresAt = editJob.ExpiresAt
+                });
+
+                TempData["InfoMessage"] = "Job udpated";
+               
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ViewBag.Error = ex.Message;
+                return View("NewEdit", editJob);
             }
         }
 
-        // POST: Job/Delete/5
-        [HttpPost]
+        // DELETE: Job/Delete/5
+        [HttpDelete]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
+                _jobRepository.DeleteJob(id);
+                return Ok();
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                return BadRequest(ex.Message);
             }
         }
 

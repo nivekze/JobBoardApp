@@ -9,6 +9,16 @@
 
 <h1>Jobs</h1>
 
+@if (!string.IsNullOrWhiteSpace(ViewBag.InfoMessage))
+{
+    <div class="alert alert-info" role="alert">
+        @ViewBag.InfoMessage
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    }
+
 <div class="row">
     <div class="col-3">
         <a asp-controller="Job" asp-action="Create" class="btn btn-primary"> New Job</a>
@@ -31,16 +41,16 @@
     </tbody>
 </table>
 
+@Html.AntiForgeryToken()
 
 
 
 @section Scripts {
     <script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="//momentjs.com/downloads/moment.js"></script>
-    
+
     <script type="text/javascript">
         $(document).ready(function () {
-
             formatDate = (data, type, row) => {
                 if (type === "sort" || type === "type") {
                     return data;
@@ -53,10 +63,10 @@
                     return data;
                 }
                 return '<a class="btn btn-sm btn-warning" href="@Url.Action("Edit","Job")/' + data + '">Editar<a> | ' +
-                       '<button class="btn btn-sm btn-danger" onclick="alert('+data+')">Elimiar</button>';
+                       '<button class="btn btn-sm btn-danger" onclick="delAction('+data+')">Elimiar</button>';
             };
 
-            $('#dt-jobs').DataTable({
+            var dt = $('#dt-jobs').DataTable({
                 "processing": true,
                 "serverSide": true,
                 "ajax": "@Url.Action("GetJobPaginated", "Job")",
@@ -84,6 +94,30 @@
                     "infoFiltered": ""
                 }
             });
+
+            delAction = (data) => {
+                if (confirm("Are you sure you want delete the job with ID " + data)) {
+                    $.ajax({
+                        url: '@Url.Action("Delete","Job")/' + data,
+                        method: 'DELETE',
+                        headers: {
+                            RequestVerificationToken:
+                                $('input:hidden[name="__RequestVerificationToken"]').val()
+                        },
+                        success: function (data) {
+                            alert("Job deleted");
+                            dt.ajax.reload();
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert("Unexpected error");
+                        }
+                    });
+                }
+            };
+
+
+
+
         });
     </script>
 }
