@@ -1,0 +1,53 @@
+﻿@model JobBoardApp.Models.JobViewModel;
+@{
+    ViewData["Title"] = ViewBag.PageTitle;
+    string action = Model.Id == 0 ? "Create" : "Edit";
+}
+
+<h1>@ViewBag.PageTitle</h1>
+
+@if (!string.IsNullOrWhiteSpace(ViewBag.Error)) { 
+<div class="alert alert-danger" role="alert">
+    Ooops! @ViewBag.Error
+</div>
+}
+
+
+<form asp-controller="Job" asp-action="@action" method="POST" asp-antiforgery="true">
+    <div>
+        <div class="col-12">
+            <p class="lead">
+                Fields with asterisk(*) are required
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="Title">Title *</label>
+                <input type="text" name="Title" id="Title" class="form-control" value="@Model.Title" />
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="ExpiresAt">Expires At *</label>
+                <input type="text" name="ExpiresAt" id="ExpiresAt" class="form-control" value="@(Model.ExpiresAt.HasValue? Model.ExpiresAt.Value.ToString("dd/MM/yyyy") :null)" placeholder="dd/MM/yyyy" />
+                <span class="form-text text-muted">Date must have the format "dd/MM/yyyy". Example 01/12/2020</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="Description">Description</label>
+                <textarea name="Description" id="Description" rows="2" class="form-control">@Model.Description</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 offset-4">
+            <input type="hidden" name="Id" id="Id" value="@Model.Id" />
+            <button class="btn btn-primary btn-block" type="submit">Save</button>
+        </div>
+    </div>
+</form>

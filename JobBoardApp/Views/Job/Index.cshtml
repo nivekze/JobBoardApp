@@ -4,11 +4,17 @@
 }
 
 @section Css {
-<link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
-
+    <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 }
 
 <h1>Jobs</h1>
+
+<div class="row">
+    <div class="col-3">
+        <a asp-controller="Job" asp-action="Create" class="btn btn-primary"> New Job</a>
+    </div>
+</div>
+<br />
 
 <table id="dt-jobs" class="display">
     <thead>
@@ -17,23 +23,67 @@
             <th>Title</th>
             <th>Description</th>
             <th>Created At</th>
-            <th>Expires At</th>
+            <th>Expire At</th>
+            <th>-</th>
         </tr>
-
     </thead>
     <tbody>
     </tbody>
-    <tr>
-        <td></td>
-    </tr>
 </table>
+
+
 
 
 @section Scripts {
     <script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//momentjs.com/downloads/moment.js"></script>
+    
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#dt-jobs').DataTable();
+
+            formatDate = (data, type, row) => {
+                if (type === "sort" || type === "type") {
+                    return data;
+                }
+                return moment(data).format("DD/MM/YYYY");
+            };
+
+            actions = (data, type, row) => {
+                if (type === "sort" || type === "type") {
+                    return data;
+                }
+                return '<a class="btn btn-sm btn-warning" href="@Url.Action("Edit","Job")/' + data + '">Editar<a> | ' +
+                       '<button class="btn btn-sm btn-danger" onclick="alert('+data+')">Elimiar</button>';
+            };
+
+            $('#dt-jobs').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": "@Url.Action("GetJobPaginated", "Job")",
+                "columns": [
+                    { "data": "id", "orderable" : false},
+                    { "data": "title", "orderable": false},
+                    { "data": "description", "orderable": false },
+                    {
+                        "data": "createdAt",
+                        "orderable": false,
+                        "render": formatDate
+                    },
+                    {
+                        "data": "expiresAt",
+                        "orderable": false,
+                        "render": formatDate
+                    },
+                    {
+                        "data": "id",
+                        "orderable": false,
+                        "render": actions
+                    }
+                ],
+                "language": {
+                    "infoFiltered": ""
+                }
+            });
         });
     </script>
 }
