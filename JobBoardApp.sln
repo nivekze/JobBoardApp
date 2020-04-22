@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobBoardApp", "JobBoardApp\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{DBEF189F-F503-46B7-942C-56FA1EE01B2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobBoardApp_DataAcces", "JobBoardApp_DataAcces\JobBoardApp_DataAcces.csproj", "{4047B604-2A80-4797-A685-B54139A93193}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobBoardApp_DataAccess", "JobBoardApp_DataAcces\JobBoardApp_DataAccess.csproj", "{4047B604-2A80-4797-A685-B54139A93193}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobBoardApp_Infrastructure", "JobBoardApp_Infrastructure\JobBoardApp_Infrastructure.csproj", "{192DEA9B-7D6B-4042-87B4-ED8036CE80EF}"
 EndProject

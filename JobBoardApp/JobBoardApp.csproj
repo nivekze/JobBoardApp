@@ -17,8 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JobBoardApp_DataAcces\JobBoardApp_DataAcces.csproj" />
-    <ProjectReference Include="..\JobBoardApp_Models\JobBoardApp_Models.csproj" />
+    <ProjectReference Include="..\JobBoardApp_Repository\JobBoardApp_Repository.csproj" />
   </ItemGroup>
 
 </Project>

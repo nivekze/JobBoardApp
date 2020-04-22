@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JobBoardApp_DataAcces\JobBoardApp_DataAccess.csproj" />
+    <ProjectReference Include="..\JobBoardApp_Infrastructure\JobBoardApp_Infrastructure.csproj" />
+    <ProjectReference Include="..\JobBoardApp_Models\JobBoardApp_Models.csproj" />
+  </ItemGroup>
+
 </Project>
