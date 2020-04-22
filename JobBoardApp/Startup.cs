@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using JobBoardApp_DataAcces;
+
 namespace JobBoardApp
 {
     public class Startup
@@ -37,6 +39,9 @@ namespace JobBoardApp
                          .AddEnvironmentVariables();
 
             Configuration = builder.Build();
+
+            // Configure database context
+            services.AddDbContext(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
