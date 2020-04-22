@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using JobBoardApp_DataAcces;
+using JobBoardApp_Infrastructure;
+using JobBoardApp_Repository;
 
 namespace JobBoardApp
 {
@@ -42,6 +44,9 @@ namespace JobBoardApp
 
             // Configure database context
             services.AddDbContext(Configuration);
+
+            //Dependecy Injection 
+            services.AddTransient<IJobRepository, JobRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
