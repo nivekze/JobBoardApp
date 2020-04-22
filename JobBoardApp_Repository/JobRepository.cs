@@ -22,6 +22,9 @@ namespace JobBoardApp_Repository
         {
             try
             {
+                if (job.ExpiresAt.HasValue && job.ExpiresAt <= DateTime.Now)
+                    throw new Exception("Expires date must be greater than today");
+
                 var newJob = new Job();
                 newJob.Title = job.Title;
                 newJob.Description = job.Description;
