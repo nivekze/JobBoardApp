@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Jobs";
+}
+
+@section Css {
+<link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+}
+
+<h1>Jobs</h1>
+
+<table id="dt-jobs" class="display">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created At</th>
+            <th>Expires At</th>
+        </tr>
+
+    </thead>
+    <tbody>
+    </tbody>
+    <tr>
+        <td></td>
+    </tr>
+</table>
+
+
+@section Scripts {
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dt-jobs').DataTable();
+        });
+    </script>
+}
