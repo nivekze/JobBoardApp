@@ -22,6 +22,5 @@ For the database I prefer to use migrations, so you only need to run the followi
 The other way is to use de PM Console from VS2019
 
 ```package manager console
-PM> cd .\MovieRental
 PM > Update-Database
 ```
