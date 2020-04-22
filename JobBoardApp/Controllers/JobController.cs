@@ -23,12 +23,6 @@ namespace JobBoardApp.Controllers
             return View();
         }
 
-        // GET: Job/Details/5
-        public IActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Job/Create
         public IActionResult Create()
         {
@@ -102,16 +96,10 @@ namespace JobBoardApp.Controllers
             }
         }
 
-        // GET: Job/Delete/5
-        public IActionResult Delete(int id)
-        {
-            return View();
-        }
-
         // POST: Job/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(int id)
         {
             try
             {
